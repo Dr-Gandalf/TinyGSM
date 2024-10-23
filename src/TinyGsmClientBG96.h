@@ -86,7 +86,9 @@ class TinyGsmBG96 : public TinyGsmModem<TinyGsmBG96>,
     friend class TinyGsmBG96;
 
    public:
-    GsmClientBG96() {}
+    GsmClientBG96() {
+      ssl_sock = false;
+    }
 
     explicit GsmClientBG96(TinyGsmBG96& modem, uint8_t mux = 0) {
       ssl_sock = false;
@@ -146,7 +148,9 @@ class TinyGsmBG96 : public TinyGsmModem<TinyGsmBG96>,
  public:
   class GsmClientSecureBG96 : public GsmClientBG96 {
    public:
-    GsmClientSecureBG96() {}
+    GsmClientSecureBG96() {
+      ssl_sock = true;
+    }
 
     explicit GsmClientSecureBG96(TinyGsmBG96& modem, uint8_t mux = 0)
         : GsmClientBG96(modem, mux) {
